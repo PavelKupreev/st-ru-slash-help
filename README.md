@@ -18,7 +18,8 @@ mklink /J "D:\SillyTavern\SillyTavern-Launcher\SillyTavern\data\default-user\ext
 
 ## Как устроено
 
-- `dict/commands.js` — переводы по командам: справка целиком, возвращаемое значение, аргументы.
+- `dict/commands.js`, `dict/chat.js` — переводы по командам, по файлу на партию: справка целиком,
+  возвращаемое значение, аргументы. `dict/index.js` собирает партии вместе.
 - `dict/phrases.js` — общие фразы (точное совпадение английского текста). Работают и для
   команд, которых нет в `commands.js`, например одинаковые описания аргументов `return`, `at`, `raw`.
 - `src/apply.js` — подмена, без зависимостей от ST.
@@ -40,7 +41,15 @@ mklink /J "D:\SillyTavern\SillyTavern-Launcher\SillyTavern\data\default-user\ext
 (`/setvar`, `/getvar`, `/addvar`, `/incvar`, `/decvar`, `/flushvar`, `/listvar`,
 `/setglobalvar`, `/getglobalvar`, `/let`, `/var`, `/len`) плюс сама `/?`.
 
-Остальные команды (их в ST около 300) пока на английском.
+Партия 2 — ещё 70 команд: чаты (`/delchat`, `/renamechat`, `/tempchat`, `/chat-jump`, `/stop`…),
+сообщения (`/message-role`, `/message-name`, `/sysgen`, `/delname`, `/reroll-pick`), персонажи
+(`/char-find`, `/char-create`, `/char-update`, `/char-get`, `/char-delete`…), группы (`/member-*`),
+шаблоны и промпт (`/instruct`, `/context`, `/api-url`, `/tokenizer`, `/getpromptentry`…),
+интерфейс (`/panels`, `/bubble`, `/flat`, `/pick-icon`, буфер обмена), работа с текстом
+(`/fuzzy`, `/replace`, `/match`, `/test`, `/substr`, `/upper`, `/lower`, `/trimtokens`…) и синтаксис
+скриптов (`/break`, `/breakpoint`, `/parser-flag`, комментарий `//`).
+
+Остальные команды (около 170) пока на английском.
 
 ## Тесты
 

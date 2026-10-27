@@ -1,8 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { translateAll, translateCommand } from '../src/apply.js';
-import { commands } from '../dict/commands.js';
-import { phrases } from '../dict/phrases.js';
+import { commands, phrases, duplicateNames } from '../dict/index.js';
 
 const dict = { commands, phrases };
 
@@ -79,4 +78,17 @@ test('у каждой записи словаря есть справка', () =
     for (const [name, entry] of Object.entries(commands)) {
         assert.ok(entry.help, `нет help у ${name}`);
     }
+});
+
+test('команда не переведена в двух партиях сразу', () => {
+    assert.deepEqual(duplicateNames(), []);
+});
+
+test('в партии 2 переведены персонажи и строки', () => {
+    const cmd = makeCmd('char-update', {
+        namedArgumentList: [{ name: 'personality', description: 'A brief description of the personality', enumList: [] }],
+    });
+    translateCommand(cmd, dict);
+    assert.match(cmd.helpString, /Меняет поля/);
+    assert.equal(cmd.namedArgumentList[0].description, 'краткое описание характера');
 });

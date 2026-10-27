@@ -1,8 +1,7 @@
 // Русская справка слэш-команд: подменяет описания команд в /help slash
 // и в подсказках автодополнения.
 import { translateAll } from './src/apply.js';
-import { commands } from './dict/commands.js';
-import { phrases } from './dict/phrases.js';
+import { commands, phrases } from './dict/index.js';
 
 const dict = { commands, phrases };
 const LOG = '[ru-slash-help]';
