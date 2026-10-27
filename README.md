@@ -18,7 +18,7 @@ mklink /J "D:\SillyTavern\SillyTavern-Launcher\SillyTavern\data\default-user\ext
 
 ## Как устроено
 
-- `dict/commands.js`, `dict/chat.js` — переводы по командам, по файлу на партию: справка целиком,
+- `dict/commands.js`, `dict/chat.js`, `dict/data.js` — переводы по командам, по файлу на партию: справка целиком,
   возвращаемое значение, аргументы. `dict/index.js` собирает партии вместе.
 - `dict/phrases.js` — общие фразы (точное совпадение английского текста). Работают и для
   команд, которых нет в `commands.js`, например одинаковые описания аргументов `return`, `at`, `raw`.
@@ -49,7 +49,13 @@ mklink /J "D:\SillyTavern\SillyTavern-Launcher\SillyTavern\data\default-user\ext
 (`/fuzzy`, `/replace`, `/match`, `/test`, `/substr`, `/upper`, `/lower`, `/trimtokens`…) и синтаксис
 скриптов (`/break`, `/breakpoint`, `/parser-flag`, комментарий `//`).
 
-Остальные команды (около 170) пока на английском.
+Партия 3 — ещё 73 команды: глобальные переменные и математика (`/addglobalvar`, `/add`, `/sub`,
+`/mul`, `/div`, `/rand`, `/sort`…), World Info (`/world`, `/findentry`, `/getentryfield`,
+`/createentry`, `/setentryfield`, `/wi-*`…), персоны (`/persona-*`), теги (`/tag-*`), заметка
+автора (`/note*`), системный промпт (`/sysprompt*`), рассуждения (`/reasoning-*`), ветки и
+чекпоинты (`/branch-create`, `/checkpoint-*`) и фоны (`/lockbg`, `/unlockbg`, `/autobg`).
+
+Остальные команды (около 100, в основном из встроенных расширений) пока на английском.
 
 ## Тесты
 

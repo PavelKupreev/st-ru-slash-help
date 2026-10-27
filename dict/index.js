@@ -1,8 +1,9 @@
 // Сборка словаря из партий. Новую партию добавлять сюда.
 import { commands as base } from './commands.js';
 import { commands as chat } from './chat.js';
+import { commands as data } from './data.js';
 
-const batches = [base, chat];
+const batches = [base, chat, data];
 
 export const commands = Object.assign({}, ...batches);
 export { phrases } from './phrases.js';
