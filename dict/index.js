@@ -2,8 +2,10 @@
 import { commands as base } from './commands.js';
 import { commands as chat } from './chat.js';
 import { commands as data } from './data.js';
+import { commands as system } from './system.js';
+import { commands as extensions } from './extensions.js';
 
-const batches = [base, chat, data];
+const batches = [base, chat, data, system, extensions];
 
 export const commands = Object.assign({}, ...batches);
 export { phrases } from './phrases.js';

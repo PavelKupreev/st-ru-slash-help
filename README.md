@@ -18,7 +18,7 @@ mklink /J "D:\SillyTavern\SillyTavern-Launcher\SillyTavern\data\default-user\ext
 
 ## Как устроено
 
-- `dict/commands.js`, `dict/chat.js`, `dict/data.js` — переводы по командам, по файлу на партию: справка целиком,
+- `dict/commands.js`, `chat.js`, `data.js`, `system.js`, `extensions.js` — переводы по командам, по файлу на партию: справка целиком,
   возвращаемое значение, аргументы. `dict/index.js` собирает партии вместе.
 - `dict/phrases.js` — общие фразы (точное совпадение английского текста). Работают и для
   команд, которых нет в `commands.js`, например одинаковые описания аргументов `return`, `at`, `raw`.
@@ -32,30 +32,18 @@ mklink /J "D:\SillyTavern\SillyTavern-Launcher\SillyTavern\data\default-user\ext
 
 ## Покрытие
 
-Партия 1 — 53 самые ходовые команды: чат и сообщения (`/send`, `/sendas`, `/sys`, `/comment`,
-`/echo`, `/impersonate`, `/continue`, `/regenerate`, `/swipe`, `/trigger`, `/gen`, `/genraw`,
-`/ask`, `/hide`, `/unhide`, `/messages`, `/del`, `/cut`, `/delswipe`, `/addswipe`, `/newchat`,
-`/closechat`, `/go`, `/random`), подключение и фон (`/api`, `/model`, `/bg`), вставки
-(`/inject`, `/listinjects`, `/flushinject`), окна (`/input`, `/popup`, `/buttons`, `/setinput`),
-управление скриптом (`/pass`, `/abort`, `/run`, `/if`, `/while`, `/times`) и переменные
-(`/setvar`, `/getvar`, `/addvar`, `/incvar`, `/decvar`, `/flushvar`, `/listvar`,
-`/setglobalvar`, `/getglobalvar`, `/let`, `/var`, `/len`) плюс сама `/?`.
+Переведены все 293 слэш-команды SillyTavern 1.19.0, включая команды встроенных расширений:
 
-Партия 2 — ещё 70 команд: чаты (`/delchat`, `/renamechat`, `/tempchat`, `/chat-jump`, `/stop`…),
-сообщения (`/message-role`, `/message-name`, `/sysgen`, `/delname`, `/reroll-pick`), персонажи
-(`/char-find`, `/char-create`, `/char-update`, `/char-get`, `/char-delete`…), группы (`/member-*`),
-шаблоны и промпт (`/instruct`, `/context`, `/api-url`, `/tokenizer`, `/getpromptentry`…),
-интерфейс (`/panels`, `/bubble`, `/flat`, `/pick-icon`, буфер обмена), работа с текстом
-(`/fuzzy`, `/replace`, `/match`, `/test`, `/substr`, `/upper`, `/lower`, `/trimtokens`…) и синтаксис
-скриптов (`/break`, `/breakpoint`, `/parser-flag`, комментарий `//`).
+- партия 1 (`commands.js`) — 53 самые ходовые: сообщения, генерация, вставки, окна, `/if`, `/while`, переменные;
+- партия 2 (`chat.js`) — 70: чаты, персонажи, группы, шаблоны, интерфейс, работа с текстом;
+- партия 3 (`data.js`) — 73: глобальные переменные и математика, World Info, персоны, теги,
+  заметка автора, системный промпт, рассуждения, ветки и чекпоинты, фоны;
+- партия 4 (`system.js`, `extensions.js`) — 97: темы, пресеты, ключи API, индикаторы загрузки,
+  управление расширениями, инструменты, а также Quick Reply, банк данных и векторы, выражения,
+  картинки, озвучка, перевод, regex, сводка, профили подключения.
 
-Партия 3 — ещё 73 команды: глобальные переменные и математика (`/addglobalvar`, `/add`, `/sub`,
-`/mul`, `/div`, `/rand`, `/sort`…), World Info (`/world`, `/findentry`, `/getentryfield`,
-`/createentry`, `/setentryfield`, `/wi-*`…), персоны (`/persona-*`), теги (`/tag-*`), заметка
-автора (`/note*`), системный промпт (`/sysprompt*`), рассуждения (`/reasoning-*`), ветки и
-чекпоинты (`/branch-create`, `/checkpoint-*`) и фоны (`/lockbg`, `/unlockbg`, `/autobg`).
-
-Остальные команды (около 100, в основном из встроенных расширений) пока на английском.
+Команды сторонних расширений остаются на английском, но общие описания аргументов из
+`phrases.js` переводятся и у них.
 
 ## Тесты
 
