@@ -1,0 +1,11 @@
+{
+    "display_name": "Русская справка слэш-команд",
+    "loading_order": 1,
+    "requires": [],
+    "optional": [],
+    "js": "index.js",
+    "css": "",
+    "author": "PavelKupreev",
+    "version": "0.1.0",
+    "auto_update": false
+}
